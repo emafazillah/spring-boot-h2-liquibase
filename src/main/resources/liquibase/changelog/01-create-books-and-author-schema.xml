@@ -21,6 +21,9 @@
       <column name="isbn" type="varchar(255)">
         <constraints nullable="true" unique="true"/>
       </column>
+      <column name="isbn_10" type="varchar(255)">
+        <constraints nullable="true" unique="true"/>
+      </column>
     </createTable>
 
     <createTable tableName="authors"

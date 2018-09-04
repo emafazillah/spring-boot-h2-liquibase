@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <changeSet author="emafazillah (generated)" id="1536035493196-1">
+        <createTable remarks="A table to contain all the authors" tableName="authors">
+            <column name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="emafazillah (generated)" id="1536035493196-2">
+        <createTable remarks="A table to contain all books" tableName="books">
+            <column name="id" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author" type="INT(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="isbn" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="emafazillah (generated)" id="1536035493196-3">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="books"/>
+    </changeSet>
+    <changeSet author="emafazillah (generated)" id="1536035493196-4">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="authors"/>
+    </changeSet>
+    <changeSet author="emafazillah (generated)" id="1536035493196-5">
+        <addForeignKeyConstraint baseColumnNames="author" baseTableName="books" constraintName="author_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="authors"/>
+    </changeSet>
+    <changeSet author="emafazillah (generated)" id="1536035493196-6">
+        <createIndex indexName="isbn" tableName="books" unique="true">
+            <column name="isbn"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="emafazillah (generated)" id="1536035493196-7">
+        <createIndex indexName="name" tableName="books" unique="true">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
